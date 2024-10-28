@@ -4,12 +4,13 @@ function AddTask({addTask}) {
     const [todo, setToDo] = useState(" ") 
     
     
-    const validate = () => { // sprawdzamy czy puste
-        if(todo.length == 0) {
+    function validate() { // sprawdzamy czy nazwa zadania nie jest pusta
+        if(todo.trim().length == 0) {
             alert("Pole nie może być puste")
+            return false
         }
         
-        return -1
+        return true
     };
 
     const handleSubmit = (event) => {
@@ -17,6 +18,7 @@ function AddTask({addTask}) {
         if(validate()) {
             alert('Dodano zadanie')
             addTask(todo)
+            setToDo("")
         }
     }
 
@@ -24,8 +26,8 @@ function AddTask({addTask}) {
         <form onSubmit={handleSubmit}>
             <div>
                 <label>Dodaj zadanie:</label>
-                <br/>
                 <input
+                    id='addTask'
                     type = "text"
                     value = {todo}
                     onChange={(e) => setToDo(e.target.value)}

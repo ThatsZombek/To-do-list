@@ -12,6 +12,7 @@ function App() {
     const savedToDos = JSON.parse(localStorage.getItem('tasks'))
     if(savedToDos) {
       setTasks(savedToDos)
+      console.log(savedToDos.toString())
     }
   }, [])
 
@@ -20,7 +21,7 @@ function App() {
     
   }, [tasks])
 
-  const addTask = taskName => { // dodanie zadanka
+  const addTask = taskName => { // dodanie zadania
     const newTask = {
       name: taskName,
       finished: false
@@ -29,19 +30,19 @@ function App() {
     
   }
 
-  function change(index) { // ukończone/nieukończone
+  function change(index) { // zmiana statusu zadania na ukończone/nieukończone
     const updatedTasks = tasks.map((task, i) =>
       i === index ? { ...task, finished: !task.finished } : task
     );
     setTasks(updatedTasks);
   }
 
-  function deleteToDo(index) {
+  function deleteToDo(index) { // usunięcie zadania
     const updatedTasks = tasks.filter((_, i) => i !== index);
     setTasks(updatedTasks);
   }
 
-  function filterTask() {
+  function filterTask() { // filtruje zadania wg wybranego filtru
     if(filterToDos == "all") {
       return tasks
     }
@@ -53,23 +54,18 @@ function App() {
     }
   }
 
-  // do zrobienia
-  const filteredTasks = filterTask()
-  // if(filter == "all") return tasks
-  //   else if(filter == "finished") {
-  //     return tasks.filter((task) => task.finished==true)
-  //   }
-  //   else {
-  //     return filteredTasks = tasks.filter((task) => task.finished==false)
-  //   }
+
+  const filteredTasks = filterTask() // przefiltrowane zadania
 
 
   
   return (
     <>
-      <AddTask addTask={addTask}/>
-      <FilterTasks setFilter={setFilter}/>
-      <GetTasks tasks={filteredTasks} change={change} deleteToDo={deleteToDo}/>
+      <div className="container">
+        <AddTask addTask={addTask}/>
+        <FilterTasks setFilter={setFilter}/>
+        <GetTasks tasks={filteredTasks} change={change} deleteToDo={deleteToDo}/>
+      </div>
     </>
   )
 }

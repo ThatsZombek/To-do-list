@@ -1,9 +1,9 @@
 import react, { useState, useEffect } from 'react'
 
 function FilterTasks({setFilter}) {
-    // nie wiem czy działa
+    // komponent z wyborem filtrowania zadań
     return (
-        <select onChange={(e) => setFilter(e.target.value)}>
+        <select className='select' onChange={(e) => setFilter(e.target.value)}>
             <option value="all">Wszystkie</option>
             <option value="finished">Ukończone</option>
             <option value="notfinished">Nieukończone</option>

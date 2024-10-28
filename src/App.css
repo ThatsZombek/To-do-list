@@ -1,42 +1,99 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.container {
+  width: 40vw;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+form {
+  border: 2px solid gray;
+  padding: 40px;
+  border-radius: 15px;
+
+  font-size: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+form input {
+  padding: 5px;
+  border-radius: 5px;
+  margin: 10px;
+  transition: .3s;
 }
 
-.card {
-  padding: 2em;
+form input:hover {
+  border: 2px solid #646cff;
 }
 
-.read-the-docs {
-  color: #888;
+button {
+  transition: .3s !important;
+}
+
+button:hover {
+  background-color: black;
+  border: 1px solid #646cff;
+}
+
+.select {
+  margin-top: 10px;
+  padding: 6px;
+  border-radius: 5px;
+  font-size: 22px;
+}
+
+.select:hover {
+  border: 1px solid #646cff;
+}
+
+.task {
+  border: 1px solid gray;
+  padding: 20px;
+  border-radius: 15px;
+  margin: 20px;
+  position: relative;
+}
+
+.task div {
+  margin: 0 70px;
+  font-size: 24px;
+}
+
+.task:has(.finished) {
+  background-color: rgb(20, 20, 20) !important;
+}
+.finished {
+  text-decoration: line-through;
+}
+
+.task input {
+  position: absolute;
+  left: 20px;
+  top: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.task input:hover {
+  background-color: black !important;
+  border: 1px solid #646cff;
+}
+.task input:checked {
+  background-color: black;
+}
+
+.task button {
+  position: absolute;
+  right: 20px;
+  top: 18px;
+  transition:.2s;
 }
