@@ -61,7 +61,7 @@ function App() {
   
   return (
     <>
-      <div className="container">
+      <div className="AllContainer">
         <AddTask addTask={addTask}/>
         <FilterTasks setFilter={setFilter}/>
         <GetTasks tasks={filteredTasks} change={change} deleteToDo={deleteToDo}/>

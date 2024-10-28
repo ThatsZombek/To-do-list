@@ -2,9 +2,21 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  
+}
+body {
+  background-color:hsla(0,100%,50%,1);
+background-image:
+radial-gradient(at 40% 20%, hsla(28,100%,74%,1) 0px, transparent 50%),
+radial-gradient(at 80% 0%, hsla(189,100%,56%,1) 0px, transparent 50%),
+radial-gradient(at 0% 50%, hsla(355,100%,93%,1) 0px, transparent 50%),
+radial-gradient(at 80% 50%, hsla(340,100%,76%,1) 0px, transparent 50%),
+radial-gradient(at 0% 100%, hsla(22,100%,77%,1) 0px, transparent 50%),
+radial-gradient(at 80% 100%, hsla(242,100%,70%,1) 0px, transparent 50%),
+radial-gradient(at 0% 0%, hsla(343,100%,76%,1) 0px, transparent 50%);
 }
 
-.container {
+.AllContainer {
   width: 40vw;
 }
 
@@ -12,7 +24,7 @@ form {
   border: 2px solid gray;
   padding: 40px;
   border-radius: 15px;
-
+  background-color: rgba(0, 0, 0, 0.3);
   font-size: 20px;
 }
 
@@ -48,26 +60,29 @@ button:hover {
 }
 
 .task {
+  background-color: rgba(0, 0, 0, 0.3);
   border: 1px solid gray;
   padding: 20px;
   border-radius: 15px;
   margin: 20px;
   position: relative;
+  transition: .3s;
 }
 
 .task div {
   margin: 0 70px;
   font-size: 24px;
+  margin-top: -16px;
 }
 
 .task:has(.finished) {
-  background-color: rgb(20, 20, 20) !important;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 .finished {
   text-decoration: line-through;
 }
 
-.task input {
+/* .task input {
   position: absolute;
   left: 20px;
   top: 16px;
@@ -89,11 +104,142 @@ button:hover {
 }
 .task input:checked {
   background-color: black;
-}
+} */
 
-.task button {
+/* .task button {
   position: absolute;
   right: 20px;
   top: 18px;
   transition:.2s;
+} */
+
+/* zmiana stylu */
+
+/* Styl checkboxa: https://uiverse.io/gagan-gv/unlucky-yak-4 */
+
+.container {
+  position: absolute;
+  left: -50px;
+  top: 18px;
 }
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+ }
+ 
+ .container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 25px;
+  user-select: none;
+ }
+ 
+
+ .checkmark {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 1.3em;
+  width: 1.3em;
+  background: black;
+  border-radius: 50px;
+  transition: all 0.7s;
+  --spread: 20px;
+ }
+ 
+ .container input:checked ~ .checkmark {
+  background: black;
+  box-shadow: -10px -10px var(--spread) 0px #5B51D8, 0 -10px var(--spread) 0px #833AB4, 10px -10px var(--spread) 0px #E1306C, 10px 0 var(--spread) 0px #FD1D1D, 10px 10px var(--spread) 0px #F77737, 0 10px var(--spread) 0px #FCAF45, -10px 10px var(--spread) 0px #FFDC80;
+ }
+ 
+ .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+ }
+ 
+ .container input:checked ~ .checkmark:after {
+  display: block;
+ }
+ 
+ .container .checkmark:after {
+  left: 0.45em;
+  top: 0.25em;
+  width: 0.25em;
+  height: 0.5em;
+  border: solid #f0f0f0;
+  border-width: 0 0.15em 0.15em 0;
+  transform: rotate(45deg);
+ }
+
+
+/* Styl przycisku do usuwania zadań: https://uiverse.io/cssbuttons-io/stupid-impala-51 */
+
+ .deleteBtn {
+  width: 120px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: red;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+  background: #e62222;
+  position: absolute;
+  right: 20px;
+  top: 13px;
+ }
+ 
+ .deleteBtn, .deleteBtn span {
+  transition: 200ms;
+ }
+ 
+ .deleteBtn .text {
+  transform: translateX(0px);
+  color: white;
+  font-weight: bold;
+ }
+ 
+ .deleteBtn .icon {
+  position: absolute;
+  border-left: 1px solid #c41b1b;
+  transform: translateX(60px);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+ 
+ .deleteBtn svg {
+  width: 15px;
+  fill: #eee;
+ }
+ 
+ .deleteBtn:hover {
+  background: #ff3636;
+ }
+ 
+ .deleteBtn:hover .text {
+  color: transparent;
+ }
+ 
+ .deleteBtn:hover .icon {
+  width: 150px;
+  border-left: none;
+  transform: translateX(-35px);
+ }
+ 
+ .deleteBtn:focus {
+  outline: none;
+ }
+ 
+ .deleteBtn:active .icon svg {
+  transform: scale(0.8);
+ }
