@@ -5,11 +5,14 @@ import FilterTasks from './components/FilterTasks.jsx'
 import './App.css'
 
 function App() {
-  const [tasks, setTasks] = useState([])
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem("tasks")
+    return savedTasks ? JSON.parse(savedTasks) : []
+  })
   const [filterToDos, setFilter] = useState("all")
 
   useEffect(() => { // odczytanie zadań z localStorage
-    const savedToDos = JSON.parse(localStorage.getItem('tasks'))
+    const savedToDos = JSON.parse(localStorage.getItem("tasks"))
     if(savedToDos) {
       setTasks(savedToDos)
       console.log(savedToDos.toString())
@@ -17,7 +20,7 @@ function App() {
   }, [])
 
   useEffect(() => { // zapisanie zadań w localStorage
-    localStorage.setItem('tasks', JSON.stringify(tasks))
+    localStorage.setItem("tasks", JSON.stringify(tasks))
     
   }, [tasks])
 
